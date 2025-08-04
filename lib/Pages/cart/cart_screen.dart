@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-// 1. Data Model for a Cart Item
 class CartItem {
   final String name;
   final String size;
@@ -21,7 +19,6 @@ class CartItem {
   });
 }
 
-// 2. Sample Data
 final List<CartItem> cartItems = [
   CartItem(
     name: 'KETCH Full Sleeve Solid Men Jacket',
@@ -43,7 +40,6 @@ final List<CartItem> cartItems = [
   ),
 ];
 
-// 3. Main UI Screen
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -54,7 +50,6 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    // DefaultTabController is needed for the TabBar
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -69,28 +64,23 @@ class _CartScreenState extends State<CartScreen> {
         ),
         body: TabBarView(
           children: [
-            // Flipkart Tab
             _buildCartList(),
-            // Grocery Tab (can be a different list or empty)
             const Center(child: Text('Grocery Cart is empty')),
           ],
         ),
-        // This is the fixed "Place order" bar at the bottom
         bottomNavigationBar: _buildPlaceOrderBar(),
       ),
     );
   }
 
-  // The main list of cart items
   Widget _buildCartList() {
     return ListView(
       children: [
         _buildDeliveryAddress(),
         const Divider(),
-        // Use ListView.separated for items with dividers
         ListView.separated(
-          physics: const NeverScrollableScrollPhysics(), // To prevent nested scrolling issues
-          shrinkWrap: true, // To make it work inside another ListView
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
           itemCount: cartItems.length,
           itemBuilder: (context, index) {
             return _buildCartItem(cartItems[index]);
@@ -101,7 +91,6 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  // Helper for the address section
   Widget _buildDeliveryAddress() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -113,7 +102,6 @@ class _CartScreenState extends State<CartScreen> {
               children: [
                 Row(
                   children: [
-                    // ✅ Wrap the long text with Expanded
                     const Expanded(
                       child: Text('Deliver to: Muhammed shamil, 679324'),
                     ),
@@ -130,7 +118,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 4), // Add a little space between lines
+                const SizedBox(height: 4),
                 const Text('Koorimannil HOUSE, Kadannamanna po,Mankada'),
               ],
             ),
@@ -143,7 +131,6 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
   }
-  // Helper for a single cart item
   Widget _buildCartItem(CartItem item) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -184,7 +171,6 @@ class _CartScreenState extends State<CartScreen> {
           const SizedBox(height: 16),
           Row(
             children: [
-              // Quantity Dropdown
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
@@ -205,7 +191,6 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
               const Spacer(),
-              // Action Buttons
               TextButton.icon(
                 icon: const Icon(Icons.bookmark_border, size: 20),
                 label: const Text('Save for later'),
@@ -223,7 +208,6 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  // Helper for the bottom "Place order" bar
   Widget _buildPlaceOrderBar() {
     return Container(
       padding: const EdgeInsets.all(16.0),

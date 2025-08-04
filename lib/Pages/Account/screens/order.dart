@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// A simple data model for an order
 class Order {
   final String status;
   final String date;
@@ -15,7 +14,6 @@ class Order {
   });
 }
 
-// Sample data for the list
 final List<Order> myOrders = [
   Order(status: 'Delivered', date: 'Dec 26, 2022', title: 'realme C30 (Denim Black, 32 GB)', imageUrl: 'assets/images/mobile1.jpeg'),
   Order(status: 'Delivered', date: 'Dec 26, 2022', title: 'Discovery+ 25% off on annual sub...', imageUrl: 'assets/images/mobile2.jpeg'),
@@ -34,10 +32,8 @@ class MyOrdersScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Search and Filter Bar
           _buildSearchAndFilterBar(),
 
-          // Order List
           Expanded(
             child: ListView.builder(
               itemCount: myOrders.length,
@@ -51,7 +47,6 @@ class MyOrdersScreen extends StatelessWidget {
     );
   }
 
-  // Helper for the search bar
   Widget _buildSearchAndFilterBar() {
     return Container(
       color: Colors.white,
@@ -83,7 +78,6 @@ class MyOrdersScreen extends StatelessWidget {
     );
   }
 
-  // Helper for a single order item card
   Widget _buildOrderItem(Order order) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),

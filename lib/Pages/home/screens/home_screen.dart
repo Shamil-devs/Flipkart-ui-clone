@@ -15,7 +15,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     'assets/images/banner2.jpeg',
     'assets/images/banner3.jpeg',
   ];
-  // Add this list inside your state class
   final List<String> _recentlyViewedImages = [
     'assets/images/mob1.webp',
     'assets/images/mob2.webp',
@@ -32,29 +31,15 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // The body is wrapped in a SingleChildScrollView to make it scrollable
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // 1. Custom App Bar Section
             _buildAppBar(),
-
-            // 2. Promotional Banner
             _buildPromoBanner(),
-
-            // 3. Services Icons
             _buildServicesIcons(),
-
-            // Add some spacing
             const SizedBox(height: 10),
-
-            // 4. Offer Cards
             _buildOfferCards(),
-
-            // Add some spacing
             const SizedBox(height: 20),
-
-            // 5. Recently Viewed Section
             _buildRecentlyViewed(),
           ],
         ),
@@ -63,7 +48,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
        );
   }
 
-  // Widget for the Custom App Bar
   Widget _buildAppBar() {
     return Container(
       padding: const EdgeInsets.only(top: 40, left: 8, right: 8, bottom: 8),
@@ -72,7 +56,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
         children: [
           Row(
             children: [
-              // Flipkart Button
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {},
@@ -100,7 +83,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
 
               const SizedBox(width: 8.0),
 
-              // Grocery Button
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: () {},
@@ -121,7 +103,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
             ],
           ),
           const SizedBox(height: 8),
-          // Search Bar
           Row(
             children: [
               Column(
@@ -134,7 +115,7 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
                       fontSize: 12,
                     ),
                   ),
-                  const SizedBox(height: 6), // Spacing between text and switch
+                  const SizedBox(height: 6),
                   Container(
                     width: 60,
                     height: 28,
@@ -144,7 +125,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
                     ),
                     child: Stack(
                       children: [
-                        // OFF Text
                         Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
@@ -159,7 +139,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
                             ),
                           ),
                         ),
-                        // Knob
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
@@ -207,8 +186,7 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-  //Banner
-  // Widget for the Promotional Banner
+
   Widget _buildPromoBanner() {
     return CarouselSlider(
       options: CarouselOptions(
@@ -241,7 +219,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-  // Widget for the Service Icons Grid
   Widget _buildServicesIcons() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
@@ -258,7 +235,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-  // Helper for creating a single icon with a label
   Widget _buildIconColumn(IconData icon, String label) {
     return Column(
       children: [
@@ -273,25 +249,21 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-  // Widget for the Offer Cards
   Widget _buildOfferCards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           children: [
-            // Laptop Deal Card - uses Image.asset
             Expanded(child: _buildDealCard('Laptop Deals\nFrom ₹14,990',
                 Image.asset('assets/images/lap.jpeg'))),
 
             const SizedBox(width: 8),
 
-            // Extra Off Card - uses Image.network
             Expanded(child: _buildDealCard('Extra ₹75 Off\nSale is Live',
                 Image.asset('assets/images/gocery.webp'))),
 
             const SizedBox(width: 8),
 
-            // BT Calling Card - uses Image.network
             Expanded(child: _buildDealCard('BT Calling | 1.83"\nSale Price ₹1,499',
                 Image.asset('assets/images/watch.jpeg'))),
           ],
@@ -299,7 +271,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-// Helper for creating a single deal card
   Widget _buildDealCard(String text, Widget imageWidget) {
     return Card(
       elevation: 2,
@@ -320,7 +291,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-  // Widget for Recently Viewed Section
   Widget _buildRecentlyViewed() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -334,12 +304,11 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          height: 150, // Fixed height for the horizontal list
+          height: 150,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: _recentlyViewedImages.length,
-            // This builds each image card
             itemBuilder: (context, index) {
               return Card(
                 child: Container(
@@ -358,7 +327,6 @@ class _FlipkartHomeScreenState extends State<FlipkartHomeScreen> {
     );
   }
 
-  // Helper for a single recently viewed item
   Widget _buildRecentItem(String imageUrl) {
     return Card(
       margin: const EdgeInsets.only(right: 10),

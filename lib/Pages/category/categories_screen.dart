@@ -37,7 +37,7 @@ class CategoriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        foregroundColor: Colors.white, // ✅ Add this line
+        foregroundColor: Colors.white,
         title: const Text('All Categories'),
         actions: [
           IconButton(
